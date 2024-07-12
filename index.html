@@ -1,26 +1,203 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
- <title>Hello there</title>
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diana Krykalova - Artist Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #6b705c;
+            --secondary-color: #a5a58d;
+            --accent-color: #cb997e;
+            --background-color: #ffe8d6;
+            --text-color: #3f4238;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+                        radial-gradient(circle, var(--secondary-color) 20%, transparent 20%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.1;
+            animation: backgroundMove 30s linear infinite;
+        }
+        @keyframes backgroundMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0;
+            position: relative;
+        }
+        header p {
+            font-size: 1.2rem;
+            position: relative;
+        }
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 40px 20px;
+            flex: 1 0 auto;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 30px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            text-align: center;
+            padding: 1rem;
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .hidden {
+            display: none;
+        }
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        #about p, #contact p {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
- <h1>May the force be with you!</h1> 
- <a href="https://www.cats.rwth-aachen.de/cms/~nohs/cats/?lidx=1" target="_blank">
- <img src="cat.jpg" height="300" alt="jedi cat" title="cats are powerful"></a>
- <br>
- <audio autoplay controls src="Obi Wan.mp3"></audio>
- <hr>
- <br>
- <!--comment-->
- <a href="https://www.google.com" target="_blank" title="Google link">Google</a>
- <br>
- <a href="page2.html" target="_self" title="Page 2 link">Go to page 2</a>
+    <header>
+        <h1>Diana Krykalova</h1>
+        <p>Artist | Portraits & Landscapes</p>
+    </header>
 
+    <nav>
+        <ul>
+            <li><a href="#home" onclick="showSection('home')">Home</a></li>
+            <li><a href="#portfolio" onclick="showSection('portfolio')">Portfolio</a></li>
+            <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+    </nav>
 
- <br>
- <p>On this page you can find a lot of useful links.</p>
+    <div id="home" class="container">
+        <section id="about">
+            <h2>About Diana</h2>
+            <p>
+                Diana Krykalova is a talented artist specializing in portraits and landscapes. 
+                Originally from Ukraine, Diana now resides in Germany, bringing a unique blend of 
+                Eastern European and Western influences to her art. With a keen eye for detail and 
+                a passion for capturing the essence of her subjects, Diana's work has garnered 
+                acclaim from art enthusiasts around the world.
+            </p>
+        </section>
+    </div>
+
+    <div id="portfolio" class="container hidden">
+        <section id="portraits">
+            <h2>Portraits</h2>
+            <div class="gallery">
+                <img src="Diana1.jpeg" alt="Portrait 1">
+                <img src="portrait2.jpg" alt="Portrait 2">
+                <img src="portrait3.jpg" alt="Portrait 3">
+            </div>
+        </section>
+
+        <section id="landscapes">
+            <h2>Landscapes</h2>
+            <div class="gallery">
+                <img src="landscape1.jpg" alt="Landscape 1">
+                <img src="landscape2.jpg" alt="Landscape 2">
+                <img src="landscape3.jpg" alt="Landscape 3">
+            </div>
+        </section>
+    </div>
+
+    <div id="contact" class="container hidden">
+        <section id="contact-info">
+            <h2>Contact</h2>
+            <p>
+                Get in touch with Diana for commissions, questions, or any inquiries:<br><br>
+                Email: diana.krykalova@example.com<br>
+                Phone: +49 123 456 7890<br>
+                Instagram: _diana_nk_<br><br>
+                Studio Location: Bedburg, Germany
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Diana Krykalova. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('portfolio').classList.add('hidden');
+            document.getElementById('contact').classList.add('hidden');
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    </script>
 </body>
-
 </html>
