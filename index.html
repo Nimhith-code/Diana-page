@@ -125,26 +125,49 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+        #language-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+        #language-switcher select {
+            padding: 5px;
+            border-radius: 5px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+        }
     </style>
 </head>
 <body>
+    <div id="language-switcher">
+        <select onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="pl">Polski</option>
+            <option value="ru">Русский</option>
+            <option value="uk">Українська</option>
+        </select>
+    </div>
+
     <header>
-        <h1>Diana Krykalova</h1>
-        <p>Artist | Portraits & Landscapes</p>
+        <h1 data-translate="name">Diana Krykalova</h1>
+        <p data-translate="title">Artist | Portraits & Landscapes</p>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#home" onclick="showSection('home')">Home</a></li>
-            <li><a href="#portfolio" onclick="showSection('portfolio')">Portfolio</a></li>
-            <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+            <li><a href="#home" onclick="showSection('home')" data-translate="nav-home">Home</a></li>
+            <li><a href="#portfolio" onclick="showSection('portfolio')" data-translate="nav-portfolio">Portfolio</a></li>
+            <li><a href="#contact" onclick="showSection('contact')" data-translate="nav-contact">Contact</a></li>
         </ul>
     </nav>
 
     <div id="home" class="container">
         <section id="about">
-            <h2>About Diana</h2>
-            <p>
+            <h2 data-translate="about-title">About Diana</h2>
+            <p data-translate="about-content">
                 Diana Krykalova is a talented artist specializing in portraits and landscapes. 
                 Originally from Ukraine, Diana now resides in Germany, bringing a unique blend of 
                 Eastern European and Western influences to her art. With a keen eye for detail and 
@@ -156,7 +179,7 @@
 
     <div id="portfolio" class="container hidden">
         <section id="portraits">
-            <h2>Portraits</h2>
+            <h2 data-translate="portraits-title">Portraits</h2>
             <div class="gallery">
                 <img src="Diana1.jpeg" alt="Portrait 1">
                 <img src="portrait2.jpg" alt="Portrait 2">
@@ -165,7 +188,7 @@
         </section>
 
         <section id="landscapes">
-            <h2>Landscapes</h2>
+            <h2 data-translate="landscapes-title">Landscapes</h2>
             <div class="gallery">
                 <img src="landscape1.jpg" alt="Landscape 1">
                 <img src="landscape2.jpg" alt="Landscape 2">
@@ -176,19 +199,19 @@
 
     <div id="contact" class="container hidden">
         <section id="contact-info">
-            <h2>Contact</h2>
-            <p>
-                Get in touch with Diana for commissions, questions, or any inquiries:<br><br>
+            <h2 data-translate="contact-title">Contact</h2>
+            <p data-translate="contact-content">
+                Get in touch with Diana for commissions, exhibitions, or any inquiries:<br><br>
                 Email: diana.krykalova@example.com<br>
                 Phone: +49 123 456 7890<br>
-                Instagram: _diana_nk_<br><br>
-                Studio Location: Bedburg, Germany
+                Instagram: @diana.krykalova.art<br><br>
+                Studio Location: Berlin, Germany
             </p>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2024 Diana Krykalova. All rights reserved.</p>
+        <p data-translate="footer">&copy; 2024 Diana Krykalova. All rights reserved.</p>
     </footer>
 
     <script>
@@ -198,6 +221,84 @@
             document.getElementById('contact').classList.add('hidden');
             document.getElementById(sectionId).classList.remove('hidden');
         }
-    </script>
-</body>
-</html>
+
+        const translations = {
+            en: {
+                "name": "Diana Krykalova",
+                "title": "Artist | Portraits & Landscapes",
+                "nav-home": "Home",
+                "nav-portfolio": "Portfolio",
+                "nav-contact": "Contact",
+                "about-title": "About Diana",
+                "about-content": "Diana Krykalova is a talented artist specializing in portraits and landscapes. Originally from Ukraine, Diana now resides in Germany, bringing a unique blend of Eastern European and Western influences to her art. With a keen eye for detail and a passion for capturing the essence of her subjects, Diana's work has garnered acclaim from art enthusiasts around the world.",
+                "portraits-title": "Portraits",
+                "landscapes-title": "Landscapes",
+                "contact-title": "Contact",
+                "contact-content": "Get in touch with Diana for commissions, exhibitions, or any inquiries:<br><br>Email: diana.krykalova@example.com<br>Phone: +49 123 456 7890<br>Instagram: @diana.krykalova.art<br><br>Studio Location: Berlin, Germany",
+                "footer": "© 2024 Diana Krykalova. All rights reserved."
+            },
+            de: {
+                "name": "Diana Krykalova",
+                "title": "Künstlerin | Porträts & Landschaften",
+                "nav-home": "Startseite",
+                "nav-portfolio": "Portfolio",
+                "nav-contact": "Kontakt",
+                "about-title": "Über Diana",
+                "about-content": "Diana Krykalova ist eine talentierte Künstlerin, die sich auf Porträts und Landschaften spezialisiert hat. Ursprünglich aus der Ukraine stammend, lebt Diana jetzt in Deutschland und bringt eine einzigartige Mischung aus osteuropäischen und westlichen Einflüssen in ihre Kunst ein. Mit einem Auge fürs Detail und einer Leidenschaft dafür, das Wesen ihrer Motive einzufangen, hat Dianas Arbeit Anerkennung von Kunstliebhabern aus aller Welt erhalten.",
+                "portraits-title": "Porträts",
+                "landscapes-title": "Landschaften",
+                "contact-title": "Kontakt",
+                "contact-content": "Kontaktieren Sie Diana für Aufträge, Ausstellungen oder Anfragen:<br><br>E-Mail: diana.krykalova@example.com<br>Telefon: +49 123 456 7890<br>Instagram: @diana.krykalova.art<br><br>Atelier: Berlin, Deutschland",
+                "footer": "© 2024 Diana Krykalova. Alle Rechte vorbehalten."
+            },
+            pl: {
+                "name": "Diana Krykalova",
+                "title": "Artystka | Portrety i Pejzaże",
+                "nav-home": "Strona główna",
+                "nav-portfolio": "Portfolio",
+                "nav-contact": "Kontakt",
+                "about-title": "O Dianie",
+                "about-content": "Diana Krykalova to utalentowana artystka specjalizująca się w portretach i pejzażach. Pochodząca z Ukrainy, Diana obecnie mieszka w Niemczech, wnosząc do swojej sztuki unikalną mieszankę wpływów wschodnioeuropejskich i zachodnich. Dzięki wyczulonemu oku na szczegóły i pasji do uchwycenia istoty swoich tematów, prace Diany zyskały uznanie miłośników sztuki na całym świecie.",
+                "portraits-title": "Portrety",
+                "landscapes-title": "Pejzaże",
+                "contact-title": "Kontakt",
+                "contact-content": "Skontaktuj się z Dianą w sprawie zleceń, wystaw lub zapytań:<br><br>E-mail: diana.krykalova@example.com<br>Telefon: +49 123 456 7890<br>Instagram: @diana.krykalova.art<br><br>Lokalizacja studia: Berlin, Niemcy",
+                "footer": "© 2024 Diana Krykalova. Wszelkie prawa zastrzeżone."
+            },
+            ru: {
+                "name": "Диана Крыкалова",
+                "title": "Художница | Портреты и Пейзажи",
+                "nav-home": "Главная",
+                "nav-portfolio": "Портфолио",
+                "nav-contact": "Контакты",
+                "about-title": "О Диане",
+                "about-content": "Диана Крыкалова - талантливая художница, специализирующаяся на портретах и пейзажах. Родом из Украины, Диана сейчас проживает в Германии, привнося в свое искусство уникальное сочетание восточноевропейских и западных влияний. Благодаря острому глазу на детали и страсти к передаче сущности своих субъектов, работы Дианы получили признание любителей искусства по всему миру.",
+                "portraits-title": "Портреты",
+                "landscapes-title": "Пейзажи",
+                "contact-title": "Контакты",
+                "contact-content": "Свяжитесь с Дианой для заказов, выставок или запросов:<br><br>Электронная почта: diana.krykalova@example.com<br>Телефон: +49 123 456 7890<br>Instagram: @diana.krykalova.art<br><br>Расположение студии: Берлин, Германия",
+                "footer": "© 2024 Диана Крыкалова. Все права защищены."
+            },
+            uk: {
+                "name": "Діана Крикалова",
+                "title": "Художниця | Портрети та Пейзажі",
+                "nav-home": "Головна",
+                "nav-portfolio": "Портфоліо",
+                "nav-contact": "Контакти",
+                "about-title": "Про Діану",
+                "about-content": "Діана Крикалова - талановита художниця, яка спеціалізується на портретах та пейзажах. Родом з України, Діана зараз проживає в Німеччині, привносячи у своє мистецтво унікальне поєднання східноєвропейських та західних впливів. Завдяки гострому оку на деталі та пристрасті до передачі сутності своїх суб'єктів, роботи Діани отримали визнання любителів мистецтва по всьому світу.",
+                "portraits-title": "Портрети",
+                "landscapes-title": "Пейзажі",
+                "contact-title": "Контакти",
+                "contact-content": "Зв'яжіться з Діаною для замовлень, виставок чи запитів:<br><br>Електронна пошта: diana.krykalova@example.com<br>Телефон: 49 123 456 7890<br>Instagram: @diana.krykalova.art<br><br>Расположение студии: Берлин, Германия",
+                "footer": "© 2024 Диана Крыкалова. Все права защищены."
+            }
+        }
+        function changeLanguage(language) {
+        const elementsToTranslate = document.querySelectorAll('[data-translate]');
+        elementsToTranslate.forEach(element => {
+            const translationKey = element.getAttribute('data-translate');
+            element.innerHTML = translations[language][translationKey];
+        });
+    }
+</script>
