@@ -176,6 +176,45 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba
         }
+        #search-container {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--secondary-color);
+        }
+
+        #search-input {
+            width: 60%;
+            max-width: 300px;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        #search-results {
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        .search-result:hover {
+            background-color: var(--secondary-color);
+        }
+
+
+        .search-result {
+            background-color: var(--background-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-result h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+
 
 /* Other styles remain the same */
 
@@ -208,6 +247,13 @@
             <li><a href="#contact" onclick="showSection('contact')" data-translate="nav-contact">Contact</a></li>
         </ul>
     </nav>
+     <!-- Add the search bar here -->
+     <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search..." onkeyup="performSearch()">
+    </div>
+
+    <!-- Add a container for search results -->
+    <div id="search-results" class="container hidden"></div>
 
     <div id="home" class="container">
         <section id="about">
@@ -264,6 +310,7 @@
             document.getElementById('home').classList.add('hidden');
             document.getElementById('portfolio').classList.add('hidden');
             document.getElementById('contact').classList.add('hidden');
+            document.getElementById('search-results').classList.add('hidden');
             document.getElementById(sectionId).classList.remove('hidden');
         }
 
@@ -361,6 +408,64 @@
     document.getElementById('portfolio').classList.toggle('dark-mode');
 }
 
+function performSearch() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const searchResults = document.getElementById('search-results');
+            searchResults.innerHTML = '';
+
+            if (searchTerm.length < 3) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+
+            const sections = ['home', 'portfolio', 'contact'];
+            let hasResults = false;
+
+            sections.forEach(section => {
+                const content = document.getElementById(section).textContent.toLowerCase();
+                if (content.includes(searchTerm)) {
+                    hasResults = true;
+                    const result = document.createElement('div');
+                    result.className = 'search-result';
+                    result.innerHTML = `
+                        <h3>${document.querySelector(`[href="#${section}"]`).textContent}</h3>
+                        <p>${content.substring(content.indexOf(searchTerm) - 50, content.indexOf(searchTerm) + 50)}...</p>
+                    `;
+                    result.onclick = function() {
+                        navigateToSection(section);
+                    };
+                    searchResults.appendChild(result);
+                }
+            });
+
+            if (hasResults) {
+                searchResults.classList.remove('hidden');
+                sections.forEach(section => document.getElementById(section).classList.add('hidden'));
+            } else {
+                searchResults.innerHTML = '<p>No results found.</p>';
+                searchResults.classList.remove('hidden');
+                sections.forEach(section => document.getElementById(section).classList.add('hidden'));
+            }
+        }
+function navigateToSection(sectionId) {
+            showSection(sectionId);
+            document.getElementById('search-input').value = '';
+            document.getElementById('search-results').classList.add('hidden');
+            
+            // Scroll to the section
+            document.getElementById(sectionId).scrollIntoView({behavior: 'smooth'});
+        }
+
+        // Modify the showSection function to hide search results when navigating
+        function showSection(sectionId) {
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('portfolio').classList.add('hidden');
+            document.getElementById('contact').classList.add('hidden');
+            document.getElementById('search-results').classList.add('hidden');
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+               
 
 document.querySelectorAll('.nav ul li a').forEach(item => {
     item.addEventListener('click', function(event) {
