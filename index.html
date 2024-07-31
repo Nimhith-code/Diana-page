@@ -243,6 +243,7 @@
     <nav>
         <ul>
             <li><a href="#home" onclick="showSection('home')" data-translate="nav-home">Home</a></li>
+            <li><a href="#services" onclick="showSection('services')" data-translate="nav-services">Services</a></li>
             <li><a href="#portfolio" onclick="showSection('portfolio')" data-translate="nav-portfolio">Portfolio</a></li>
             <li><a href="#contact" onclick="showSection('contact')" data-translate="nav-contact">Contact</a></li>
         </ul>
@@ -265,6 +266,27 @@
                 a passion for capturing the essence of her subjects, Diana's work has garnered 
                 acclaim from art enthusiasts around the world.
             </p>
+        </section>
+    </div>
+
+    <div id="services" class="container hidden">
+        <section id="services-section">
+            <h2 data-translate="services-title">My Services</h2>
+            <ul class="service-list" data-translate="services-content">
+                <li>Cards</li>
+                <li>Invitations</li>
+                <li>Photo albums</li>
+                <li>Presentations</li>
+                <li>Portraits</li>
+                <li>Posters</li>
+                <li>Advertising posters</li>
+                <li>Interior paintings</li>
+                <li>Book covers</li>
+                <li>Illustrations</li>
+                <li>Magazines</li>
+                <li>Newspapers, articles</li>
+                <li>Calendars</li>
+            </ul>
         </section>
     </div>
 
@@ -308,6 +330,7 @@
     <script>
         function showSection(sectionId) {
             document.getElementById('home').classList.add('hidden');
+            document.getElementById('services').classList.add('hidden');
             document.getElementById('portfolio').classList.add('hidden');
             document.getElementById('contact').classList.add('hidden');
             document.getElementById('search-results').classList.add('hidden');
@@ -327,7 +350,24 @@
                 "landscapes-title": "Landscapes",
                 "contact-title": "Contact",
                 "contact-content": "Get in touch with Diana for commissions, exhibitions, or any inquiries:<br><br>Email: diana.nk.arts@gmail.com<br>Phone: +49 123 456 7890<br>Instagram: @_diana_nk_<br><br>Studio Location: Bedburg, Germany",
-                "footer": "© 2024 Diana Krykalova. All rights reserved."
+                "footer": "© 2024 Diana Krykalova. All rights reserved.",
+                "services-title": "My Services",
+                "nav-services": "Services",
+                "services-content": `
+                    <li>Cards</li>
+                    <li>Invitations</li>
+                    <li>Photo albums</li>
+                    <li>Presentations</li>
+                    <li>Portraits</li>
+                    <li>Posters</li>
+                    <li>Advertising posters</li>
+                    <li>Interior paintings</li>
+                    <li>Book covers</li>
+                    <li>Illustrations</li>
+                    <li>Magazines</li>
+                    <li>Newspapers, articles</li>
+                    <li>Calendars</li>
+                `
             },
             de: {
                 "name": "Diana Krykalova",
@@ -341,7 +381,25 @@
                 "landscapes-title": "Landschaften",
                 "contact-title": "Kontakt",
                 "contact-content": "Kontaktieren Sie Diana für Aufträge, Ausstellungen oder Anfragen:<br><br>E-Mail: diana.nk.arts@gmail.com<br>Telefon: +49 123 456 7890<br>Instagram: @_diana_nk_<br><br>Atelier: Bedburg, Deutschland",
-                "footer": "© 2024 Diana Krykalova. Alle Rechte vorbehalten."
+                "footer": "© 2024 Diana Krykalova. Alle Rechte vorbehalten.",
+                "nav-services": "Dienstleistungen",
+                "services-title": "Meine Dienstleistungen",
+                "services-content": `
+                    <li>Karten</li>
+                    <li>Einladungen</li>
+                    <li>Fotoalben</li>
+                    <li>Präsentationen</li>
+                    <li>Porträts</li>
+                    <li>Plakate</li>
+                    <li>Werbeplakate</li>
+                    <li>Innenraumgemälde</li>
+                    <li>Buchcover</li>
+                    <li>Illustrationen</li>
+                    <li>Zeitschriften</li>
+                    <li>Zeitungen, Artikel</li>
+                    <li>Kalender</li>
+                `
+
             },
             pl: {
                 "name": "Diana Krykalova",
@@ -355,7 +413,24 @@
                 "landscapes-title": "Pejzaże",
                 "contact-title": "Kontakt",
                 "contact-content": "Skontaktuj się z Dianą w sprawie zleceń, wystaw lub zapytań:<br><br>E-mail: diana.nk.arts@gmail.com<br>Telefon: +49 123 456 7890<br>Instagram: @_diana_nk_<br><br>Lokalizacja studia: Bedburg, Niemcy",
-                "footer": "© 2024 Diana Krykalova. Wszelkie prawa zastrzeżone."
+                "footer": "© 2024 Diana Krykalova. Wszelkie prawa zastrzeżone.",
+                "nav-services": "Usługi",
+                "services-title": "Moje Usługi",
+                "services-content": `
+                    <li>Karty</li>
+                    <li>Zaproszenia</li>
+                    <li>Albumy fotograficzne</li>
+                    <li>Prezentacje</li>
+                    <li>Portrety</li>
+                    <li>Plakaty</li>
+                    <li>Plakaty reklamowe</li>
+                    <li>Obrazy do wnętrz</li>
+                    <li>Okładki książek</li>
+                    <li>Ilustracje</li>
+                    <li>Czasopisma</li>
+                    <li>Gazety, artykuły</li>
+                    <li>Kalendarze</li>
+                `
             },
             ru: {
                 "name": "Диана Крикалова",
@@ -369,7 +444,24 @@
                 "landscapes-title": "Пейзажи",
                 "contact-title": "Контакты",
                 "contact-content": "Свяжитесь с Дианой для заказов, выставок или запросов:<br><br>Электронная почта: diana.nk.arts@gmail.com<br>Телефон: +49 123 456 7890<br>Instagram: @_diana_nk_<br><br>Расположение студии: Бедбург, Германия",
-                "footer": "© 2024 Диана Крыкалова. Все права защищены."
+                "footer": "© 2024 Диана Крыкалова. Все права защищены.",
+                "nav-services": "Услуги",
+                "services-title": "Мои услуги",
+                "services-content": `
+                    <li>Открытки</li>
+                    <li>Приглашения</li>
+                    <li>Фотоальбомы</li>
+                    <li>Презентации</li>
+                    <li>Портреты</li>
+                    <li>Постеры</li>
+                    <li>Рекламные плакаты</li>
+                    <li>Интерьерная живопись</li>
+                    <li>Обложки книг</li>
+                    <li>Иллюстрации</li>
+                    <li>Журналы</li>
+                    <li>Газеты, статьи</li>
+                    <li>Календари</li>
+                `
             },
             uk: {
                 "name": "Діана Крикалова",
@@ -383,7 +475,25 @@
                 "landscapes-title": "Пейзажі",
                 "contact-title": "Контакти",
                 "contact-content": "Зв'яжіться з Діаною для замовлень, виставок чи запитів:<br><br>Електронна пошта: diana.nk.arts@gmail.com<br>Телефон: 49 123 456 7890<br>Instagram: @_diana_nk_<br><br>Расположение студии: Бедбург, Германия",
-                "footer": "© 2024 Диана Крыкалова. Все права защищены."
+                "footer": "© 2024 Диана Крыкалова. Все права защищены.",
+                "nav-services": "Послуги",
+                "services-title": "Мої послуги",
+                "services-content": `
+                    <li>Листівки</li>
+                    <li>Запрошення</li>
+                    <li>Фотоальбоми</li>
+                    <li>Презентації</li>
+                    <li>Портрети</li>
+                    <li>Постери</li>
+                    <li>Рекламні плакати</li>
+                    <li>Інтер'єрний живопис</li>
+                    <li>Обкладинки книг</li>
+                    <li>Ілюстрації</li>
+                    <li>Журнали</li>
+                    <li>Газети, статті</li>
+                    <li>Календарі</li>
+                `
+
             }
         };
 
@@ -418,7 +528,7 @@ function performSearch() {
                 return;
             }
 
-            const sections = ['home', 'portfolio', 'contact'];
+            const sections = ['home','services' ,'portfolio', 'contact'];
             let hasResults = false;
 
             sections.forEach(section => {
@@ -459,6 +569,7 @@ function navigateToSection(sectionId) {
         // Modify the showSection function to hide search results when navigating
         function showSection(sectionId) {
             document.getElementById('home').classList.add('hidden');
+            document.getElementById('services').classList.add('hidden');
             document.getElementById('portfolio').classList.add('hidden');
             document.getElementById('contact').classList.add('hidden');
             document.getElementById('search-results').classList.add('hidden');
